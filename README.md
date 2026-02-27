@@ -11,6 +11,40 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Netlify deployment (one-click ready)
+
+This repo now includes a `netlify.toml` and Netlify Next.js plugin so you can deploy directly.
+
+### Option A: Import from GitHub (recommended)
+
+1. Push this repo to GitHub.
+2. In Netlify, click **Add new project → Import an existing project**.
+3. Select this repository.
+4. Netlify should auto-detect:
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+5. Deploy.
+
+### Option B: Netlify CLI
+
+```bash
+npm install
+npm install -g netlify-cli
+netlify login
+netlify init
+netlify deploy --build --prod
+```
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` for local development. In Netlify, add the same keys under **Site configuration → Environment variables**.
+
+- `OPENAI_API_KEY` (optional, for real LLM integration)
+- `NEXT_PUBLIC_SUPABASE_URL` (optional)
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (optional)
+- `SUPABASE_SERVICE_ROLE_KEY` (optional)
+- `DATABASE_URL` (optional)
+
 ## Implemented modules
 
 - AI Smart Dashboard
