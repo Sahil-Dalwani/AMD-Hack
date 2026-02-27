@@ -2,7 +2,16 @@
 
 Full-stack MVP built with **Next.js + Tailwind CSS** exposing backend APIs for tasks, time logs, dashboard analytics, AI schedule suggestions, and research copilot generation.
 
-## Run locally
+## Project location
+
+Everything is generated **inside this repository root**. Run commands from the folder that contains:
+
+- `package.json`
+- `app/`
+- `components/`
+- `lib/`
+
+## Run locally (from repo root)
 
 ```bash
 npm install
@@ -11,9 +20,23 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## One-command bootstrap
+
+### macOS / Linux
+
+```bash
+./scripts/bootstrap.sh
+```
+
+### Windows PowerShell
+
+```powershell
+.\scripts\bootstrap.ps1
+```
+
 ## Netlify deployment (one-click ready)
 
-This repo now includes a `netlify.toml` and Netlify Next.js plugin so you can deploy directly.
+This repo includes a `netlify.toml` and Netlify Next.js plugin so you can deploy directly.
 
 ### Option A: Import from GitHub (recommended)
 
