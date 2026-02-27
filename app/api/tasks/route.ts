@@ -20,3 +20,36 @@ export async function POST(request: Request) {
   db.tasks.push(task);
   return NextResponse.json(task, { status: 201 });
 }
+
+export async function PATCH(request: Request) {
+  const body = await request.json();
+  const id = String(body.id ?? "");
+  const task = db.tasks.find((t) => t.id === id);
+
+  if (!task) {
+    return NextResponse.json({ error: "Task not found" }, { status: 404 });
+  }
+
+  if (typeof body.completed === "boolean") {
+    task.completed = body.completed;
+  }
+
+  return NextResponse.json(task);
+}
+
+export async function DELETE(request: Request) {
+  const url = new URL(request.url);
+  const id = url.searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json({ error: "Missing task id" }, { status: 400 });
+  }
+
+  const index = db.tasks.findIndex((t) => t.id === id);
+  if (index === -1) {
+    return NextResponse.json({ error: "Task not found" }, { status: 404 });
+  }
+
+  const [removed] = db.tasks.splice(index, 1);
+  return NextResponse.json(removed);
+}
